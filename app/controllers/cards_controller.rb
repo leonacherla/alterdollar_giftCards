@@ -12,6 +12,24 @@ class CardsController < ApplicationController
   def show
   end
 
+  def makeTemplate
+    card = (Time.now).to_s
+    status = "Just Created"
+    template = Card.create(card_id: card, 
+                           template_category: params[:template_category], 
+                           custom_conf: params[:canvas_data], 
+                           display_receipient_name: params[:display_receipient_name], 
+                           display_sender_message: params[:display_sender_message],
+                           display_sender_name: params[:display_sender_name],
+                           sender_username: session[:username],
+                           card_status: status)
+    puts template
+    resp = {
+      "status" => "template saved"
+    }
+    render json: template
+  end
+
   # GET /cards/new
   def new
     @card = Card.new

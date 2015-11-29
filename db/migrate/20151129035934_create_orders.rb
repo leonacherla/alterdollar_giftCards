@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :receiver_phone
       t.string :gift_card_id
       t.decimal :amount
+      t.string :card_status
 
       t.timestamps null: false
     end

@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128231635) do
+ActiveRecord::Schema.define(version: 20151129111708) do
 
   create_table "cards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "card_id",                 limit: 255
+    t.string   "template_category",       limit: 255
+    t.string   "custom_conf",             limit: 255
+    t.string   "display_receipient_name", limit: 255
+    t.string   "display_sender_message",  limit: 255
+    t.string   "display_sender_name",     limit: 255
+    t.string   "template_image_url",      limit: 255
+    t.string   "sender_username",         limit: 255
+    t.string   "card_status",             limit: 255
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "homes", force: :cascade do |t|
@@ -30,8 +39,14 @@ ActiveRecord::Schema.define(version: 20151128231635) do
     t.integer  "receiver_phone", limit: 4
     t.string   "gift_card_id",   limit: 255
     t.decimal  "amount",                     precision: 10
+    t.string   "card_status",    limit: 255
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|

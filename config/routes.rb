@@ -16,7 +16,14 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#signup'
   get '/login', to: 'users#login'
+  get '/makeTemplate', to: 'cards#makeTemplate'
   get '/order', to: 'orders#place_order'
+  
+
+  get "/client_token", to: "payments#auth"
+
+  get "/checkout", to: "payments#braintree"
+  
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

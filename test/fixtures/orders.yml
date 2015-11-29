@@ -7,6 +7,7 @@ one:
   receiver_phone: 1
   gift_card_id: MyString
   amount: 9.99
+  card_status: MyString
 
 two:
   sender: MyString
@@ -15,3 +16,4 @@ two:
   receiver_phone: 1
   gift_card_id: MyString
   amount: 9.99
+  card_status: MyString

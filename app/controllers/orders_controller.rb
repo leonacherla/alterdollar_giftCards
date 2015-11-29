@@ -22,16 +22,29 @@ class OrdersController < ApplicationController
   end
 
   def place_order
-    giftcard = #Get giftcard id (reference to the template), by querying using the session id.
+    
+    #TODO: Currently only one card per order, make the order have provisions for multiple card orders.
+
+    temp = Card.where(card_status: "Just Created", sender_username: session[:username]).limit(1)
+    @id = nil
+    @net = 0
+    
+    puts "*****************************"
+    temp.each do |r| 
+      @id.push = r.card_id
+      # @net += r.amount 
+    end
+    puts "*****************************"
+    giftcard = @id#Get giftcard id (reference to the template), by querying using the session id.
     order = Order.create(sender: session[:username], 
                          receiver_name: params[:receiver_name], 
                          receiver_email: params[:receiver_email], 
                          receiver_phone: params[:receiver_phone], 
-                         gift_card_id: 10, 
+                         gift_card_id: giftcard, 
                          amount: params[:amount])
 
     puts "order created. #{order}"
-    render json: orders
+    render json: order
   end
 
   # POST /orders
