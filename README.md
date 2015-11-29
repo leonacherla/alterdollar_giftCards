@@ -1,5 +1,4 @@
-# alterdollar_giftCards
-<h1>Suning - Smart Gift Cards</h1>
+<h1>@alterdollar : Suning - Smart Gift Cards</h1>
 <br />
 <h2>Team</h2>
 <p>@bsaideepak, @vijay_raj_thota, @swati_bais, @raghav_gangal</p>
