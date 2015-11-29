@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender: MyString
+  receiver_name: MyString
+  receiver_email: MyString
+  receiver_phone: 1
+  gift_card_id: MyString
+  amount: 9.99
+
+two:
+  sender: MyString
+  receiver_name: MyString
+  receiver_email: MyString
+  receiver_phone: 1
+  gift_card_id: MyString
+  amount: 9.99
