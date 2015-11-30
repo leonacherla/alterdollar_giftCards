@@ -14,8 +14,7 @@
 <p>[/makeTemplate] <b>Customization</b>   //Save serialized image in database.</p>
 <p>[/order] <b>Place Order for gift card</b>
 <p>[/checkout] <b>Payment</b>   //Process payment details and get boolean pass/fail result.</p>
-<p>[/{egcId}/sendCard] <b>Send Gift Card</b>  //Generate redemption URL, secure token and show additional security question options..</p>
-<p>[/RedeemGiftCard] <b>Redemption</b> //Validate number token or QR code</p>
+<p>[/adcode] <b>Redemption</b> //Validate number token</p>
 
 <h2>Additional APIs</h2>
 <p>[/passChange] <b>Reset Password</b></p>
