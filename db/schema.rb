@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129111708) do
+ActiveRecord::Schema.define(version: 20151130005405) do
+
+  create_table "adcheques", force: :cascade do |t|
+    t.binary   "ad_id",             limit: 16
+    t.binary   "order_id",          limit: 16
+    t.decimal  "amount",                        precision: 10
+    t.binary   "ad_code",           limit: 16
+    t.string   "redemption_status", limit: 255
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
 
   create_table "cards", force: :cascade do |t|
     t.string   "card_id",                 limit: 255
@@ -27,19 +37,14 @@ ActiveRecord::Schema.define(version: 20151129111708) do
     t.datetime "updated_at",                          null: false
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "orders", force: :cascade do |t|
-    t.string   "sender",         limit: 255
+    t.binary   "order_id",       limit: 16
     t.string   "receiver_name",  limit: 255
     t.string   "receiver_email", limit: 255
     t.integer  "receiver_phone", limit: 4
-    t.string   "gift_card_id",   limit: 255
+    t.string   "card_id",        limit: 255
     t.decimal  "amount",                     precision: 10
-    t.string   "card_status",    limit: 255
+    t.string   "order_status",   limit: 255
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
@@ -55,8 +60,11 @@ ActiveRecord::Schema.define(version: 20151129111708) do
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.binary   "ad_id",      limit: 16
+    t.binary   "order_id",   limit: 16
+    t.binary   "adr",        limit: 16
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade do |t|

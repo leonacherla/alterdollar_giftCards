@@ -8,6 +8,8 @@ gem "mysql2", "~> 0.3.11"
 
 gem "braintree"
 
+gem "activeuuid"
+
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'twilio-ruby'

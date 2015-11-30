@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    activeuuid (0.6.1)
+      activerecord (>= 3.1)
+      uuidtools
     arel (6.0.3)
     bcrypt (3.1.10)
     bcrypt-ruby (3.1.5)
@@ -143,6 +146,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.5)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -153,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeuuid
   bcrypt-ruby
   braintree
   byebug

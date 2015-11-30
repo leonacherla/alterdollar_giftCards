@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
@@ -35,6 +37,8 @@ class PaymentsController < ApplicationController
     puts "***********************************************"
     if result.success?
       @status = "success"
+      code = (SecureRandom.uuid).to_s
+
     else
       @status = "failure"
     end

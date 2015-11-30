@@ -21,6 +21,21 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def redeem
+    code = params[:code]
+    result = Order.where(code: code)
+    if result != []
+      @resp = {
+        "message" => "Redemption Successful."
+      }
+    else
+      @resp = {
+        "message" => "Error in redemption code"
+      }
+    end
+    render json: @resp
+  end
+
   def place_order
     
     #TODO: Currently only one card per order, make the order have provisions for multiple card orders.
@@ -31,16 +46,16 @@ class OrdersController < ApplicationController
     
     puts "*****************************"
     temp.each do |r| 
-      @id.push = r.card_id
+      @id = r.card_id
       # @net += r.amount 
     end
     puts "*****************************"
     giftcard = @id#Get giftcard id (reference to the template), by querying using the session id.
-    order = Order.create(sender: session[:username], 
-                         receiver_name: params[:receiver_name], 
+     
+    order = Order.create(receiver_name: params[:receiver_name], 
                          receiver_email: params[:receiver_email], 
                          receiver_phone: params[:receiver_phone], 
-                         gift_card_id: giftcard, 
+                         card_id: giftcard, 
                          amount: params[:amount])
 
     puts "order created. #{order}"
