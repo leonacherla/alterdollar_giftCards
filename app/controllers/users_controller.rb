@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    puts params[:username]
+    render json: params[:username]
+  end
+
   def signup
     user = User.create(name: params[:name], 
                        password: params[:password], 

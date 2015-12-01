@@ -3673,3 +3673,10 @@ Started GET "/checkout?payment_method_nonce=fake-valid-debit-nonce" for ::1 at 2
 Processing by PaymentsController#braintree as HTML
   Parameters: {"payment_method_nonce"=>"fake-valid-debit-nonce"}
 Completed 200 OK in 693ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/saideepak09@gmail.com" for ::1 at 2015-12-01 00:02:40 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (10.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#profile as 
+  Parameters: {"username"=>"saideepak09@gmail"}
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 0.0ms)
