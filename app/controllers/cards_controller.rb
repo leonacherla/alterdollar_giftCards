@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
@@ -13,14 +15,11 @@ class CardsController < ApplicationController
   end
 
   def makeTemplate
-    card = (Time.now).to_s
+    card = SecureRandom.uuid
     status = "Just Created"
     template = Card.create(card_id: card, 
                            template_category: params[:template_category], 
                            custom_conf: params[:canvas_data], 
-                           display_receipient_name: params[:display_receipient_name], 
-                           display_sender_message: params[:display_sender_message],
-                           display_sender_name: params[:display_sender_name],
                            sender_username: session[:username],
                            card_status: status)
     puts template

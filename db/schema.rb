@@ -11,42 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130005405) do
+ActiveRecord::Schema.define(version: 20151201070000) do
 
   create_table "adcheques", force: :cascade do |t|
     t.binary   "ad_id",             limit: 16
     t.binary   "order_id",          limit: 16
     t.decimal  "amount",                        precision: 10
-    t.binary   "ad_code",           limit: 16
+    t.binary   "adcode",            limit: 16
     t.string   "redemption_status", limit: 255
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string   "card_id",                 limit: 255
-    t.string   "template_category",       limit: 255
-    t.string   "custom_conf",             limit: 255
-    t.string   "display_receipient_name", limit: 255
-    t.string   "display_sender_message",  limit: 255
-    t.string   "display_sender_name",     limit: 255
-    t.string   "template_image_url",      limit: 255
-    t.string   "sender_username",         limit: 255
-    t.string   "card_status",             limit: 255
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "card_id",            limit: 255
+    t.string   "template_category",  limit: 255
+    t.string   "custom_conf",        limit: 255
+    t.string   "template_image_url", limit: 255
+    t.string   "sender_username",    limit: 255
+    t.string   "card_status",        limit: 255
+    t.string   "card_amount",        limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.binary   "order_id",       limit: 16
-    t.string   "receiver_name",  limit: 255
-    t.string   "receiver_email", limit: 255
-    t.integer  "receiver_phone", limit: 4
-    t.string   "card_id",        limit: 255
-    t.decimal  "amount",                     precision: 10
-    t.string   "order_status",   limit: 255
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.binary   "order_id",        limit: 16
+    t.string   "sender_username", limit: 255
+    t.string   "receiver_name",   limit: 255
+    t.string   "receiver_email",  limit: 255
+    t.integer  "receiver_phone",  limit: 4
+    t.string   "card_id",         limit: 255
+    t.decimal  "amount",                      precision: 10
+    t.string   "order_status",    limit: 255
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   create_table "payments", force: :cascade do |t|
@@ -62,7 +61,7 @@ ActiveRecord::Schema.define(version: 20151130005405) do
   create_table "receipts", force: :cascade do |t|
     t.binary   "ad_id",      limit: 16
     t.binary   "order_id",   limit: 16
-    t.binary   "adr",        limit: 16
+    t.integer  "adr",        limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 20151130005405) do
     t.string   "email",      limit: 255
     t.string   "password",   limit: 255
     t.integer  "phone",      limit: 4
+    t.string   "balance",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

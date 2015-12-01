@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -52,7 +54,8 @@ class OrdersController < ApplicationController
     puts "*****************************"
     giftcard = @id#Get giftcard id (reference to the template), by querying using the session id.
      
-    order = Order.create(receiver_name: params[:receiver_name], 
+    order = Order.create(sender_username: session[:username], 
+                         receiver_name: params[:receiver_name], 
                          receiver_email: params[:receiver_email], 
                          receiver_phone: params[:receiver_phone], 
                          card_id: giftcard, 

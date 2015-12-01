@@ -3380,3 +3380,296 @@ Started GET "/checkout?payment_method_nonce=fake-valid-payroll-nonce" for ::1 at
 Processing by PaymentsController#braintree as HTML
   Parameters: {"payment_method_nonce"=>"fake-valid-payroll-nonce"}
 Completed 200 OK in 1077ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup?name=raj&&email=vrcooldude69@gmail.com&&password=[FILTERED]&&phone=5105" for ::1 at 2015-11-29 17:49:57 -0800
+Processing by UsersController#signup as HTML
+  Parameters: {"name"=>"raj", "email"=>"vrcooldude69@gmail.com", "password"=>"[FILTERED]", "phone"=>"5105"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `users` (`name`, `password`, `email`, `phone`, `created_at`, `updated_at`) VALUES ('raj', 'timepass', 'vrcooldude69@gmail.com', 5105, '2015-11-30 01:49:57', '2015-11-30 01:49:57')[0m
+  [1m[35m (1.1ms)[0m  COMMIT
+Completed 200 OK in 54ms (Views: 1.2ms | ActiveRecord: 23.4ms)
+
+
+Started GET "/login?email=vrcooldude69@outlook.com&&password=[FILTERED]" for ::1 at 2015-11-29 17:50:21 -0800
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"vrcooldude69@outlook.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'vrcooldude69@outlook.com' AND `users`.`password` = 'sai'[0m
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/login?email=vrcooldude69@gmail.com&&password=[FILTERED]" for ::1 at 2015-11-29 17:50:36 -0800
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"vrcooldude69@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'vrcooldude69@gmail.com' AND `users`.`password` = 'timepass'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/makeTemplate?template_category=birthday&&display_receipient_name=sai&&display_sender_message=Blah&&display_sender_name=leo" for ::1 at 2015-11-29 17:51:19 -0800
+Processing by CardsController#makeTemplate as HTML
+  Parameters: {"template_category"=>"birthday", "display_receipient_name"=>"sai", "display_sender_message"=>"Blah", "display_sender_name"=>"leo"}
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.7ms)[0m  INSERT INTO `cards` (`card_id`, `template_category`, `display_receipient_name`, `display_sender_message`, `display_sender_name`, `sender_username`, `card_status`, `created_at`, `updated_at`) VALUES ('2015-11-29 17:51:19 -0800', 'birthday', 'sai', 'Blah', 'leo', 'vrcooldude69@gmail.com', 'Just Created', '2015-11-30 01:51:19', '2015-11-30 01:51:19')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 19ms (Views: 1.5ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/order?receiver_name=saideepak&&receiver_email=saideepak09@awesome.com&&receiver_phone=510516&&amount=100" for ::1 at 2015-11-29 17:52:47 -0800
+Processing by OrdersController#place_order as HTML
+  Parameters: {"receiver_name"=>"saideepak", "receiver_email"=>"saideepak09@awesome.com", "receiver_phone"=>"510516", "amount"=>"100"}
+  [1m[35mCard Load (1.0ms)[0m  SELECT  `cards`.* FROM `cards` WHERE `cards`.`card_status` = 'Just Created' AND `cards`.`sender_username` = 'vrcooldude69@gmail.com' LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO `orders` (`receiver_name`, `receiver_email`, `receiver_phone`, `card_id`, `amount`, `created_at`, `updated_at`) VALUES ('saideepak', 'saideepak09@awesome.com', 510516, '2015-11-29 17:51:19 -0800', 100, '2015-11-30 01:52:47', '2015-11-30 01:52:47')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 20ms (Views: 1.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/checkout?payment_method_nonce=fake-valid-payroll-nonce" for ::1 at 2015-11-29 17:53:10 -0800
+Processing by PaymentsController#braintree as HTML
+  Parameters: {"payment_method_nonce"=>"fake-valid-payroll-nonce"}
+Completed 200 OK in 816ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkout?payment_method_nonce=fake-valid-debit-nonce" for ::1 at 2015-11-29 17:53:26 -0800
+Processing by PaymentsController#braintree as HTML
+  Parameters: {"payment_method_nonce"=>"fake-valid-debit-nonce"}
+Completed 200 OK in 792ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login?email=saideepak09@gmail.com&&password=[FILTERED]" for ::1 at 2015-11-30 21:33:13 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"saideepak09@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'saideepak09@gmail.com' AND `users`.`password` = 'sai'
+Completed 200 OK in 44ms (Views: 0.3ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/signup?name=sai&&email=saideepak@outlook.com&&password=[FILTERED]&&phone=5105" for ::1 at 2015-11-30 21:33:54 -0800
+Processing by UsersController#signup as HTML
+  Parameters: {"name"=>"sai", "email"=>"saideepak@outlook.com", "password"=>"[FILTERED]", "phone"=>"5105"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  INSERT INTO `users` (`name`, `password`, `email`, `phone`, `created_at`, `updated_at`) VALUES ('sai', 'sai', 'saideepak@outlook.com', 5105, '2015-12-01 05:33:54', '2015-12-01 05:33:54')
+  [1m[36m (11.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/login?email=saideepak09@gmail.com&&password=[FILTERED]" for ::1 at 2015-11-30 21:34:03 -0800
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"saideepak09@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'saideepak09@gmail.com' AND `users`.`password` = 'sai'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login?email=saideepak@outlook.com&&password=[FILTERED]" for ::1 at 2015-11-30 21:34:13 -0800
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"saideepak@outlook.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'saideepak@outlook.com' AND `users`.`password` = 'sai'[0m
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (47.4ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (29.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateProducts (20151128081209)
+  [1m[35m (29.7ms)[0m  CREATE TABLE `products` (`id` int(11) auto_increment PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151128081209')
+  [1m[36m (5.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20151128083630)
+  [1m[35m (27.5ms)[0m  CREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `name` varchar(255), `email` varchar(255), `password` varchar(255), `phone` int(11), `balance` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151128083630')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCards (20151129033637)
+  [1m[35m (26.7ms)[0m  CREATE TABLE `cards` (`id` int(11) auto_increment PRIMARY KEY, `card_id` varchar(255), `template_category` varchar(255), `custom_conf` varchar(255), `template_image_url` varchar(255), `sender_username` varchar(255), `card_status` varchar(255), `card_amount` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151129033637')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateOrders (20151129035934)
+  [1m[35m (26.2ms)[0m  CREATE TABLE `orders` (`id` int(11) auto_increment PRIMARY KEY, `order_id` binary(16), `sender_username` varchar(255), `receiver_name` varchar(255), `receiver_email` varchar(255), `receiver_phone` int(11), `card_id` varchar(255), `amount` decimal, `order_status` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151129035934')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreatePayments (20151129111708)
+  [1m[35m (26.9ms)[0m  CREATE TABLE `payments` (`id` int(11) auto_increment PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151129111708')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAdcheques (20151201065816)
+  [1m[35m (9.1ms)[0m  CREATE TABLE `adcheques` (`id` int(11) auto_increment PRIMARY KEY, `ad_id` binary(16), `order_id` binary(16), `amount` decimal, `adcode` binary(16), `redemption_status` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151201065816')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReceipts (20151201070000)
+  [1m[35m (7.7ms)[0m  CREATE TABLE `receipts` (`id` int(11) auto_increment PRIMARY KEY, `ad_id` binary(16), `order_id` binary(16), `adr` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20151201070000')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (1.0ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'adcheques'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `adcheques`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'cards'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `cards`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'orders'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `orders`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'payments'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `payments`
+  [1m[36m (0.1ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'products'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `products`
+  [1m[36m (0.1ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'receipts'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `receipts`
+  [1m[36m (0.2ms)[0m  [1mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'alterdollar'
+  AND fk.table_name = 'users'
+[0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+
+
+Started GET "/signup?name=raj&&email=vrcooldude69@gmail.com&&password=[FILTERED]&&phone=5105" for ::1 at 2015-11-30 23:02:33 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by UsersController#signup as HTML
+  Parameters: {"name"=>"raj", "email"=>"vrcooldude69@gmail.com", "password"=>"[FILTERED]", "phone"=>"5105"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`name`, `password`, `email`, `phone`, `balance`, `created_at`, `updated_at`) VALUES ('raj', 'timepass', 'vrcooldude69@gmail.com', 5105, '0', '2015-12-01 07:02:34', '2015-12-01 07:02:34')[0m
+  [1m[35m (6.3ms)[0m  COMMIT
+Completed 200 OK in 50ms (Views: 1.1ms | ActiveRecord: 26.7ms)
+
+
+Started GET "/login?email=vrcooldude69@gmail.com&&password=[FILTERED]" for ::1 at 2015-11-30 23:02:37 -0800
+Processing by UsersController#login as HTML
+  Parameters: {"email"=>"vrcooldude69@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'vrcooldude69@gmail.com' AND `users`.`password` = 'timepass'[0m
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/makeTemplate?template_category=birthday&&display_receipient_name=sai&&display_sender_message=Blah&&display_sender_name=leo" for ::1 at 2015-11-30 23:02:40 -0800
+Processing by CardsController#makeTemplate as HTML
+  Parameters: {"template_category"=>"birthday", "display_receipient_name"=>"sai", "display_sender_message"=>"Blah", "display_sender_name"=>"leo"}
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 18.9ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'display_receipient_name' for Card.):
+  app/controllers/cards_controller.rb:18:in `makeTemplate'
+
+
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (53.1ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (50.8ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (111.6ms)
+
+
+Started GET "/makeTemplate?template_category=birthday&&display_receipient_name=sai&&display_sender_message=Blah&&display_sender_name=leo" for ::1 at 2015-11-30 23:04:50 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by CardsController#makeTemplate as HTML
+  Parameters: {"template_category"=>"birthday", "display_receipient_name"=>"sai", "display_sender_message"=>"Blah", "display_sender_name"=>"leo"}
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.2ms)
+
+ActiveRecord::UnknownAttributeError (unknown attribute 'display_receipient_name' for Card.):
+  app/controllers/cards_controller.rb:20:in `makeTemplate'
+
+
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.6ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (37.8ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/sai/.rvm/gems/ruby-2.2.1/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (86.4ms)
+
+
+Started GET "/makeTemplate?template_category=birthday&&display_receipient_name=sai&&display_sender_message=Blah&&display_sender_name=leo" for ::1 at 2015-11-30 23:06:26 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Processing by CardsController#makeTemplate as HTML
+  Parameters: {"template_category"=>"birthday", "display_receipient_name"=>"sai", "display_sender_message"=>"Blah", "display_sender_name"=>"leo"}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `cards` (`card_id`, `template_category`, `sender_username`, `card_status`, `created_at`, `updated_at`) VALUES ('4c656860-6514-4701-841c-9545b9d7ffe4', 'birthday', 'vrcooldude69@gmail.com', 'Just Created', '2015-12-01 07:06:26', '2015-12-01 07:06:26')[0m
+  [1m[35m (6.2ms)[0m  COMMIT
+Completed 200 OK in 51ms (Views: 0.5ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/makeTemplate?template_category=birthday&&display_receipient_name=sai&&display_sender_message=Blah&&display_sender_name=leo" for ::1 at 2015-11-30 23:06:26 -0800
+Processing by CardsController#makeTemplate as HTML
+  Parameters: {"template_category"=>"birthday", "display_receipient_name"=>"sai", "display_sender_message"=>"Blah", "display_sender_name"=>"leo"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `cards` (`card_id`, `template_category`, `sender_username`, `card_status`, `created_at`, `updated_at`) VALUES ('0cc52178-745d-4bc9-9402-0417d84b0617', 'birthday', 'vrcooldude69@gmail.com', 'Just Created', '2015-12-01 07:06:26', '2015-12-01 07:06:26')
+  [1m[36m (10.8ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/order?receiver_name=saideepak&&receiver_email=saideepak09@awesome.com&&receiver_phone=510516&&amount=100" for ::1 at 2015-11-30 23:06:30 -0800
+Processing by OrdersController#place_order as HTML
+  Parameters: {"receiver_name"=>"saideepak", "receiver_email"=>"saideepak09@awesome.com", "receiver_phone"=>"510516", "amount"=>"100"}
+  [1m[35mCard Load (0.3ms)[0m  SELECT  `cards`.* FROM `cards` WHERE `cards`.`card_status` = 'Just Created' AND `cards`.`sender_username` = 'vrcooldude69@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `orders` (`sender_username`, `receiver_name`, `receiver_email`, `receiver_phone`, `card_id`, `amount`, `created_at`, `updated_at`) VALUES ('vrcooldude69@gmail.com', 'saideepak', 'saideepak09@awesome.com', 510516, '4c656860-6514-4701-841c-9545b9d7ffe4', 100, '2015-12-01 07:06:30', '2015-12-01 07:06:30')
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 38ms (Views: 0.5ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/checkout?payment_method_nonce=fake-valid-debit-nonce" for ::1 at 2015-11-30 23:06:33 -0800
+Processing by PaymentsController#braintree as HTML
+  Parameters: {"payment_method_nonce"=>"fake-valid-debit-nonce"}
+Completed 200 OK in 693ms (Views: 0.2ms | ActiveRecord: 0.0ms)

@@ -3,7 +3,7 @@ class CreateReceipts < ActiveRecord::Migration
     create_table :receipts do |t|
       t.uuid :ad_id
       t.uuid :order_id
-      t.uuid :adr
+      t.integer :adr
 
       t.timestamps null: false
     end

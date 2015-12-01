@@ -4,12 +4,12 @@ one:
   ad_id: 
   order_id: 
   amount: 9.99
-  ad_code: 
+  adcode: 
   redemption_status: MyString
 
 two:
   ad_id: 
   order_id: 
   amount: 9.99
-  ad_code: 
+  adcode: 
   redemption_status: MyString

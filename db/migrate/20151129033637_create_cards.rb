@@ -4,12 +4,10 @@ class CreateCards < ActiveRecord::Migration
       t.string :card_id
       t.string :template_category
       t.string :custom_conf
-      t.string :display_receipient_name
-      t.string :display_sender_message
-      t.string :display_sender_name
       t.string :template_image_url
       t.string :sender_username
       t.string :card_status
+      t.string :card_amount
 
       t.timestamps null: false
     end

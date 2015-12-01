@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def signup
-    user = User.create(name: params[:name], password: params[:password], email: params[:email], phone: params[:phone])
+    user = User.create(name: params[:name], 
+                       password: params[:password], 
+                       email: params[:email], 
+                       phone: params[:phone],
+                       balance: 0)
     puts user
     render json: user
   end

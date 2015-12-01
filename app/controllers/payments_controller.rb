@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
     if result.success?
       @status = "success"
       code = (SecureRandom.uuid).to_s
-
+      #TODO adcheque
     else
       @status = "failure"
     end

@@ -2,6 +2,7 @@ class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
       t.uuid :order_id
+      t.string :sender_username
       t.string :receiver_name
       t.string :receiver_email
       t.integer :receiver_phone
