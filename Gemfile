@@ -4,13 +4,7 @@ gem 'rails', '4.2.4'
 
 gem "passenger"
 
-gem :production do
-	gem "mysql2", "~> 0.3.11"
-end
-
-gem :development do
-	gem "mysql2", "~> 0.3.11"
-end
+gem "mysql2", "~> 0.3.11"
 
 gem "braintree"
 
@@ -19,7 +13,6 @@ gem "activeuuid"
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'twilio-ruby'
-# Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
