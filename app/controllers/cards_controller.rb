@@ -21,7 +21,12 @@ class CardsController < ApplicationController
                            template_category: params[:template_category], 
                            custom_conf: params[:canvas_data], 
                            sender_username: session[:username],
+                           card_amount: params[:card_amount],
                            card_status: status)
+    
+    session[:card_id] = card
+    cookies[:card_id] = card
+
     puts template
     resp = {
       "status" => "template saved"

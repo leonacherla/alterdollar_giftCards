@@ -37,14 +37,37 @@ class PaymentsController < ApplicationController
     puts "***********************************************"
     if result.success?
       @status = "success"
-      code = (SecureRandom.uuid).to_s
+      @ad_id = (SecureRandom.uuid).to_s
+      @adcode = (SecureRandom.uuid).to_s
+      @redemption_status = "Ready for Redemption"
+      @order_id = session[:order_id]
+      @amount = 0
+
+      @card_amount = Order.where(order_id: session[:order_id]).select(:amount)
+      @card_amount.each do |r| 
+        @amount = r.amount
+      end
+
+      adcheque = Adcheque.create(ad_id: @ad_id,
+                                 adcode: @adcode,
+                                 amount: @amount,
+                                 order_id: @order_id,
+                                 redemption_status: @redemption_status)
+
+      puts "Adcheque: #{adcheque}"
+
+      @adr = (SecureRandom.uuid).to_s 
+      receipt = Receipt.create(ad_id: @ad_id,
+                               order_id: @order_id,
+                               adr: @adr)
+
       #TODO adcheque
     else
       @status = "failure"
     end
     puts "***********************************************"
     resp = {
-      "transaction_status" => @status
+      "transaction_status" => "Gift card purchased. ADR: #{@adr}. Gift card will be delivered soon."
     }
     render json: resp
   end

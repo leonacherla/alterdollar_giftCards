@@ -1,10 +1,10 @@
 class CreateAdcheques < ActiveRecord::Migration
   def change
     create_table :adcheques do |t|
-      t.uuid :ad_id
-      t.uuid :order_id
+      t.string :ad_id
+      t.string :order_id
       t.decimal :amount
-      t.uuid :adcode
+      t.string :adcode
       t.string :redemption_status
 
       t.timestamps null: false

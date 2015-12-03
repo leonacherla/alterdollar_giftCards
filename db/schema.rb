@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201070000) do
+ActiveRecord::Schema.define(version: 20151201231729) do
 
   create_table "adcheques", force: :cascade do |t|
-    t.binary   "ad_id",             limit: 16
-    t.binary   "order_id",          limit: 16
+    t.string   "ad_id",             limit: 255
+    t.string   "order_id",          limit: 255
     t.decimal  "amount",                        precision: 10
-    t.binary   "adcode",            limit: 16
+    t.string   "adcode",            limit: 255
     t.string   "redemption_status", limit: 255
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20151201070000) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.binary   "order_id",        limit: 16
+    t.string   "order_id",        limit: 255
     t.string   "sender_username", limit: 255
     t.string   "receiver_name",   limit: 255
     t.string   "receiver_email",  limit: 255
@@ -59,15 +59,16 @@ ActiveRecord::Schema.define(version: 20151201070000) do
   end
 
   create_table "receipts", force: :cascade do |t|
-    t.binary   "ad_id",      limit: 16
-    t.binary   "order_id",   limit: 16
-    t.integer  "adr",        limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "ad_id",      limit: 255
+    t.string   "order_id",   limit: 255
+    t.string   "adr",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       limit: 255
+    t.string   "username",   limit: 255
     t.string   "email",      limit: 255
     t.string   "password",   limit: 255
     t.integer  "phone",      limit: 4

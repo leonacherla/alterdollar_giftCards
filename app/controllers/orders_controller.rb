@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
 
   def redeem
     code = params[:code]
-    result = Order.where(code: code)
+    result = Receipt.where(adr: params[:code])
     if result != []
       @resp = {
         "message" => "Redemption Successful."
@@ -42,27 +42,53 @@ class OrdersController < ApplicationController
     
     #TODO: Currently only one card per order, make the order have provisions for multiple card orders.
 
-    temp = Card.where(card_status: "Just Created", sender_username: session[:username]).limit(1)
-    @id = nil
-    @net = 0
+    # temp = Card.where(card_status: "Just Created", sender_username: session[:username]).limit(1)
+    # @id = nil
+    # @net = 0
     
-    puts "*****************************"
-    temp.each do |r| 
-      @id = r.card_id
+    # puts "*****************************"
+    # temp.each do |r| 
+    #   @id = r.card_id
+    #   # @net += r.amount 
+    # end
+    # puts "*****************************"
+    # giftcard = @id#Get giftcard id (reference to the template), by querying using the session id.
+    
+    giftcard = session[:card_id]
+    @amount = Card.where(card_id: giftcard).select(:card_amount)
+    @card_amount = 0
+
+    puts "***********************************************"
+    
+    @amount.each do |r| 
+      @card_amount = r.card_amount
       # @net += r.amount 
     end
-    puts "*****************************"
-    giftcard = @id#Get giftcard id (reference to the template), by querying using the session id.
-     
-    order = Order.create(sender_username: session[:username], 
+    puts "***********************************************"
+
+
+    order = (SecureRandom.uuid).to_s
+    new_order = Order.create(sender_username: session[:username], 
                          receiver_name: params[:receiver_name], 
                          receiver_email: params[:receiver_email], 
                          receiver_phone: params[:receiver_phone], 
-                         card_id: giftcard, 
-                         amount: params[:amount])
+                         card_id: giftcard,
+                         order_id: order, 
+                         amount: @card_amount)
+
+    session[:card_id] = nil
+    session[:order_id] = order
+
+    cookies[:card_id] = nil
+    cookies[:order_id] = order
 
     puts "order created. #{order}"
-    render json: order
+
+    resp = {
+      "message" => "successfully created card."
+    }
+
+    render json: resp
   end
 
   # POST /orders
