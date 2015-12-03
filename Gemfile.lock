@@ -85,6 +85,7 @@ GEM
     passenger (5.0.21)
       rack
       rake (>= 0.8.1)
+    pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -165,6 +166,7 @@ DEPENDENCIES
   jquery-rails
   mysql2 (~> 0.3.11)
   passenger
+  pg
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
