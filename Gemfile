@@ -3,8 +3,13 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 
 gem "passenger"
+group :development do
+	gem "mysql2", "~> 0.3.11"
+end
 
-gem "mysql2", "~> 0.3.11"
+group :production do
+	gem pg
+end
 
 gem "braintree"
 
