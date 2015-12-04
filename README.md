@@ -8,7 +8,18 @@
 <br />
 
 <h2>Core APIs</h2>
-<p>[/login] <b>Login</b></p>
+<p>GET '/signup'
+<p>GET '/logon'
+<p>GET '/login'
+<p>GET "/client_token"
+<p>GET "/checkout"
+<p>GET '/redeem'
+<p>GET '/:username/makeTemplate'
+<p>GET '/:username'  #Still under construction
+<p>GET '/:username/order'
+  
+
+<p> [/login] <b>Login</b></p>
 <p>[/signup] <b>Signup</b></p>
 <p>[/] <b>Browse Categories - Home</b></p>
 <p>[/makeTemplate] <b>Customization</b>   //Save serialized image in database.</p>
